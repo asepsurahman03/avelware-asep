@@ -1,0 +1,29 @@
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0d1b2a !important; /* Warna latar belakang navy dark */
+  }
+  
+  .sidebar-item {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .sidebar-item.active {
+    background-color: #1b263b !important; /* Warna biru gelap lebih terang untuk menu aktif */
+  }
+  
+  .sidebar-icon {
+    font-size: 18px;
+  }
+  
