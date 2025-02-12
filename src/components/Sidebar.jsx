@@ -26,11 +26,10 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Tombol Menu untuk Mobile (Kanan Atas & Lebih Besar) */}
+      {/* Tombol Menu untuk Mobile */}
       <Button 
         variant="dark" 
-        className="d-md-none position-fixed top-0 end-0 m-3 p-2"
-        style={{ fontSize: "24px", zIndex: 1050 }} 
+        className="d-md-none position-fixed top-0 start-0 m-3" 
         onClick={toggleSidebar}
       >
         <FaBars />
