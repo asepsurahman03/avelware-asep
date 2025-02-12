@@ -1,4 +1,4 @@
-import { Container, Row, Col, Card, Image, Button } from "react-bootstrap";
+import { Container, Card, Image, Button } from "react-bootstrap";
 import Sidebar from "./Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -17,8 +17,17 @@ const Profile = () => {
       }}
     >
       <Sidebar />
-      <div className="flex-grow-1 p-4 d-flex justify-content-center align-items-center" style={{ marginLeft: "250px", marginRight: "auto" }}>
-        <Card className="text-white bg-gradient p-4 shadow-lg border-0 rounded w-100 mx-3" style={{ maxWidth: "500px", background: "linear-gradient(135deg, #6a11cb, #2575fc)" }}>
+      <div 
+        className="flex-grow-1 p-4 d-flex justify-content-center align-items-center"
+        style={{ marginLeft: "auto", marginRight: "auto", maxWidth: "100%" }} // Menghapus margin kiri di layar kecil
+      >
+        <Card 
+          className="text-white bg-gradient p-4 shadow-lg border-0 rounded w-100 mx-3"
+          style={{ 
+            maxWidth: "500px", 
+            background: "linear-gradient(135deg, #6a11cb, #2575fc)" 
+          }}
+        >
           <Card.Body className="text-center">
             <div className="position-relative mb-3">
               <Image
