@@ -30,6 +30,7 @@ const Sidebar = () => {
       <Button 
         variant="dark" 
         className="d-md-none position-fixed top-0 start-0 m-3" 
+        style={{ fontSize: "24px", zIndex: 1050 }} 
         onClick={toggleSidebar}
       >
         <FaBars />
