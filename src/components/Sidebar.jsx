@@ -42,9 +42,8 @@ const Sidebar = () => {
         <h3 className="text-center mb-4">AVELWARE</h3>
         <ListGroup variant="flush">
           {menuItems.map((item) => (
-            <>
+            <React.Fragment key={item.name}>
               <ListGroup.Item
-                key={item.name}
                 action
                 onClick={() => item.dropdown ? setReportOpen(!reportOpen) : navigate(item.path)}
                 className={`d-flex justify-content-between align-items-center text-white ${location.pathname === item.path ? "active bg-primary" : "bg-transparent"}`}
@@ -77,25 +76,28 @@ const Sidebar = () => {
                   ))}
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </ListGroup>
       </div>
 
       {/* Mobile Sidebar */}
-      <Offcanvas show={showSidebar} onHide={() => setShowSidebar(false)} backdrop="true" className="bg-dark text-white">
+      <Offcanvas show={showSidebar} onHide={() => setShowSidebar(false)} backdrop={true} className="bg-dark text-white">
         <Offcanvas.Header>
           <Offcanvas.Title>AVELWARE</Offcanvas.Title>
-          <Button variant="link" className="text-white" onClick={() => setShowSidebar(false)}>
+          <Button 
+            variant="link" 
+            className="text-white position-absolute top-0 end-0 m-3"
+            onClick={() => setShowSidebar(false)}
+          >
             <FaTimes size={24} />
           </Button>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ListGroup variant="flush">
             {menuItems.map((item) => (
-              <>
+              <React.Fragment key={item.name}>
                 <ListGroup.Item
-                  key={item.name}
                   action
                   onClick={() => { setShowSidebar(false); item.dropdown ? setReportOpen(!reportOpen) : navigate(item.path); }}
                   className={`d-flex justify-content-between align-items-center text-white ${location.pathname === item.path ? "active bg-primary" : "bg-transparent"}`}
@@ -128,7 +130,7 @@ const Sidebar = () => {
                     ))}
                   </div>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </ListGroup>
         </Offcanvas.Body>
