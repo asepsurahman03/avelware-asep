@@ -4,9 +4,6 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGri
 import Sidebar from "./Sidebar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-
 
 const Dashboard = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -25,7 +22,23 @@ const Dashboard = () => {
     { name: "Pertamax Max", volume: 130, capacity: 200, status: "STANDBY", color: "#800080" }
   ];
 
-  
+const [startIndex, setStartIndex] = useState(0);
+const [slideDirection, setSlideDirection] = useState(""); // "left" atau "right"
+const itemsPerPage = 3;
+
+const nextSlide = () => {
+  if (startIndex + itemsPerPage < fuelStatus.length) {
+    setSlideDirection("right");
+    setTimeout(() => setStartIndex(startIndex + 1), 100);
+  }
+};
+
+const prevSlide = () => {
+  if (startIndex > 0) {
+    setSlideDirection("left");
+    setTimeout(() => setStartIndex(startIndex - 1), 100);
+  }
+};
 
   const carUsageData = [
     { name: "Car 1", volume: 85 },
@@ -111,26 +124,47 @@ const Dashboard = () => {
             </Card>
           </Col>
 
-          {/* Fuel Status Cards */}
-          <Row>
-          {fuelStatus.map((fuel, index) => (
-            <Col key={index} md={4} className="mb-3">
-              <Card className="p-3 text-white shadow" style={{ backgroundColor: fuel.color, borderRadius: "12px" }}>
-                <Card.Body className="d-flex align-items-center">
-                  <div className="tank-container me-1" style={{ width: "15px", height: "70px", border: "2px solid white", borderRadius: "5px", position: "relative", overflow: "hidden", background: "#ddd" }}>
-                    <div className="fuel-level" style={{ position: "absolute", bottom: 0, width: "100%", height: `${(fuel.volume / fuel.capacity) * 100}%`, background: fuel.color }}></div>
-                  </div>
-                  <FaGasPump size={80} className="me-3" />
-                  <div>
-                    <Card.Title className="fw-bold">{fuel.name}</Card.Title>
-                    <Card.Text>{fuel.volume} / {fuel.capacity} L</Card.Text>
-                    <Card.Text className="fw-bold">Status: {fuel.status}</Card.Text>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+          <Row className="position-relative">
+            {/* Tombol Panah Kiri */}
+            <button
+              className="position-absolute start-0 top-50 translate-middle-y btn btn-light"
+              onClick={prevSlide}
+              disabled={startIndex === 0}
+              style={{ zIndex: 10, borderRadius: "50%", width: "40px", height: "40px" }}
+            >
+              {"<"}
+            </button>
+
+            {/* Menampilkan 3 item sesuai indeks startIndex */}
+            {fuelStatus.slice(startIndex, startIndex + itemsPerPage).map((fuel, index) => (
+              <Col key={index} md={4} className="mb-3">
+                <Card className="p-3 text-white shadow" style={{ backgroundColor: fuel.color, borderRadius: "12px" }}>
+                  <Card.Body className="d-flex align-items-center">
+                    <div className="tank-container me-1" style={{ width: "15px", height: "70px", border: "2px solid white", borderRadius: "5px", position: "relative", overflow: "hidden", background: "#ddd" }}>
+                      <div className="fuel-level" style={{ position: "absolute", bottom: 0, width: "100%", height: `${(fuel.volume / fuel.capacity) * 100}%`, background: fuel.color }}></div>
+                    </div>
+                    <FaGasPump size={80} className="me-3" />
+                    <div>
+                      <Card.Title className="fw-bold">{fuel.name}</Card.Title>
+                      <Card.Text>{fuel.volume} / {fuel.capacity} L</Card.Text>
+                      <Card.Text className="fw-bold">Status: {fuel.status}</Card.Text>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+
+            {/* Tombol Panah Kanan */}
+            <button
+              className="position-absolute end-0 top-50 translate-middle-y btn btn-light"
+              onClick={nextSlide}
+              disabled={startIndex + itemsPerPage >= fuelStatus.length}
+              style={{ zIndex: 10, borderRadius: "50%", width: "40px", height: "40px" }}
+            >
+              {">"}
+            </button>
+          </Row>
+
 
           {/* Charts */}
           <Col md={6} className="mt-4">

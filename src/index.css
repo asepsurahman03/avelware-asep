@@ -69,3 +69,63 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@media (max-width: 768px) {
+  /* Sidebar */
+  .sidebar {
+    display: none; /* Menyembunyikan sidebar di tampilan mobile */
+  }
+
+  /* Main content area */
+  .flex-grow-4 {
+    margin-left: 0;
+  }
+
+  /* Header */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .d-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Adjust input and icons */
+  .bg-secondary {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .fa-search {
+    margin-left: 10px;
+  }
+
+  /* Dropdown profile */
+  .dropdown-toggle {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Fuel Status Cards */
+  .tank-container {
+    width: 30px;
+    height: 50px;
+  }
+
+  .fuel-level {
+    height: 60%;
+  }
+
+  /* Chart Adjustments */
+  .chart-container {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* Table adjustments */
+  .table {
+    font-size: 12px;
+  }
+}
