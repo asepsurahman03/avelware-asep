@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+<<<<<<< HEAD
 import { 
   FaTachometerAlt, FaFileAlt, FaHistory, FaUsersCog, FaUser, 
   FaChevronRight, FaChevronDown, FaBars 
 } from "react-icons/fa";
+=======
+import { FaTachometerAlt, FaFileAlt, FaHistory, FaUsersCog, FaUser, FaChevronRight, FaChevronDown, FaBars } from "react-icons/fa";
+>>>>>>> 2f6ee29024138088b78146c5730cfd26d5ef0da5
 import { ListGroup, Offcanvas, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+<<<<<<< HEAD
 
   const [reportOpenDesktop, setReportOpenDesktop] = useState(false);
   const [reportOpenMobile, setReportOpenMobile] = useState(false);
+=======
+  const [reportOpen, setReportOpen] = useState(false);
+>>>>>>> 2f6ee29024138088b78146c5730cfd26d5ef0da5
   const [showSidebar, setShowSidebar] = useState(false); // Kontrol sidebar mobile
 
   const toggleSidebar = () => setShowSidebar(!showSidebar);
@@ -50,6 +58,7 @@ const Sidebar = () => {
             <React.Fragment key={item.name}>
               <ListGroup.Item
                 action
+<<<<<<< HEAD
                 onClick={() => {
                   if (item.dropdown) {
                     setReportOpenDesktop(!reportOpenDesktop);
@@ -57,6 +66,9 @@ const Sidebar = () => {
                     navigate(item.path);
                   }
                 }}
+=======
+                onClick={() => item.dropdown ? setReportOpen(!reportOpen) : navigate(item.path)}
+>>>>>>> 2f6ee29024138088b78146c5730cfd26d5ef0da5
                 className={`d-flex justify-content-between align-items-center text-white ${location.pathname === item.path ? "active bg-primary" : "bg-transparent"}`}
                 style={{ border: "none", fontSize: "16px", padding: "12px", transition: "background 0.3s ease-in-out", cursor: "pointer" }}
               >
@@ -97,6 +109,7 @@ const Sidebar = () => {
               <React.Fragment key={item.name}>
                 <ListGroup.Item
                   action
+<<<<<<< HEAD
                   onClick={() => {
                     if (item.dropdown) {
                       setReportOpenMobile(!reportOpenMobile);
@@ -105,6 +118,9 @@ const Sidebar = () => {
                       setShowSidebar(false); // Menutup sidebar setelah navigasi
                     }
                   }}
+=======
+                  onClick={() => item.dropdown ? setReportOpen(!reportOpen) : navigate(item.path)}
+>>>>>>> 2f6ee29024138088b78146c5730cfd26d5ef0da5
                   className={`d-flex justify-content-between align-items-center text-white ${location.pathname === item.path ? "active bg-primary" : "bg-transparent"}`}
                   style={{ border: "none", fontSize: "16px", padding: "12px", transition: "background 0.3s ease-in-out", cursor: "pointer" }}
                 >
@@ -120,10 +136,14 @@ const Sidebar = () => {
                       <ListGroup.Item
                         key={subItem.name}
                         action
+<<<<<<< HEAD
                         onClick={() => {
                           navigate(subItem.path);
                           setShowSidebar(false); // Menutup sidebar setelah navigasi
                         }}
+=======
+                        onClick={() => navigate(subItem.path)}
+>>>>>>> 2f6ee29024138088b78146c5730cfd26d5ef0da5
                         className="text-white bg-transparent ps-5"
                         style={{ border: "none", padding: "10px" }}
                       >
